@@ -7,12 +7,12 @@ var properties = [
     {name: 'link'},
     {name: 'address'},
     {name: 'area'},
-    {name: 'apt-type'},
+    {name: 'aptType'},
     {name: 'rent'},
-    {name: 'square-feet'},
+    {name: 'squareFeet'},
     {name: 'bedrooms'},
     {name: 'bathrooms'},
-    {name: 'move-in-date'},
+    {name: 'moveInDate'},
     {name: 'contact'},
     {name: 'parking'},
     {name: 'amenities'},
@@ -28,7 +28,48 @@ var properties = [
     //{name: 'time-to-sm'},   
 ]
 
+//  order: add, typ, cont, cont? resp?
+//  visit-date, visit-notes, area, how close?
+//  time-to-campus, squareFeet, bedrooms, bathrooms
+//  total rent, move in date, utilities, pets, parking
+//  amenities, link, additional notes
+
+
 function save (obj) {
+    var address = obj.address;
+    var type = obj.aptType;
+    var contact = obj.contact;
+    var contacted = 'N/A';
+    var responded = 'N/A';
+
+    var visitDate = 'N/A';
+    var visitNotes = 'N/A';
+    var area = obj.area;
+    var howClose = 'N/A';
+
+    var timeToSanMon = 'N/A';
+    var squareFeet = obj.squareFeet;
+    var bedrooms = obj.bedrooms;
+    var bathrooms = obj.bathrooms;
+
+    var rent = obj.rent;
+    var moveInDate = obj.moveInDate;
+    var utilities = obj.utilities;
+    var pets = obj.pets;
+    var parking = obj.parking;
+
+    var amenities = obj.amenities;
+    var link = obj.link;
+    var additionalNotes = obj.notes;
+
+    var apartment = `${address}, ${type}, ${contact}, ${responded}, ${visitDate}, ${visitNotes}, ${area}, ${howClose}, ${timeToSanMon}, ${squareFeet}, ${bedrooms}, ${bathrooms}, ${rent}, ${moveInDate}, ${utilities}, ${pets}, ${parking}, ${amenities}, ${link}, ${additionalNotes}\r\n`;
+
+    fs.appendFile('data.txt', apartment, function (err) {
+        if (err) {
+            throw error;
+        }
+        console.log('data appended');
+    });
 
 
 }
