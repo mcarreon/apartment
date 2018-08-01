@@ -28,6 +28,13 @@ var properties = [
     //{name: 'time-to-sm'},   
 ]
 
+if (args[0] === 'laptop' || args[0] === 'home') {console.log('Valid log')} 
+else {
+    console.log('Please specify log location');
+    return 1;
+}
+
+
 //  order: add, typ, cont, cont? resp?
 //  visit-date, visit-notes, area, how close?
 //  time-to-campus, squareFeet, bedrooms, bathrooms
@@ -64,13 +71,28 @@ function save (obj) {
 
     var apartment = `${address}, ${type}, ${contact}, ${responded}, ${visitDate}, ${visitNotes}, ${area}, ${howClose}, ${timeToSanMon}, ${squareFeet}, ${bedrooms}, ${bathrooms}, ${rent}, ${moveInDate}, ${utilities}, ${pets}, ${parking}, ${amenities}, ${link}, ${additionalNotes}\r\n`;
 
-    fs.appendFile('data.txt', apartment, function (err) {
-        if (err) {
-            throw error;
-        }
-        console.log('data appended');
-    });
+    switch (args[0]) {
+        case 'home': 
+            fs.appendFile('data.txt', apartment, function (err) {
+                if (err) {
+                    throw error;
+                }
+                console.log('data appended');
+            });
+            break;
 
+        case 'laptop':
+            fs.appendFile('laptop.txt', apartment, function (err) {
+                if (err) {
+                    throw error;
+                }
+                console.log('data appended');
+            });
+            break;
+        default:
+            console.log('Invalid log location');
+            break;
+    }
 
 }
 
