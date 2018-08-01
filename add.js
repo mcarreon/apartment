@@ -62,7 +62,7 @@ function save (obj) {
     var link = obj.link;
     var additionalNotes = obj.notes;
 
-    var apartment = `${address}, ${type}, ${contact}, ${responded}, ${visitDate}, ${visitNotes}, ${area}, ${howClose}, ${timeToSanMon}, ${squareFeet}, ${bedrooms}, ${bathrooms}, ${rent}, ${moveInDate}, ${utilities}, ${pets}, ${parking}, ${amenities}, ${link}, ${additionalNotes}\r\n`;
+    var apartment = `${address}, ${type}, ${contact}, ${contacted}, ${responded}, ${visitDate}, ${visitNotes}, ${area}, ${howClose}, ${timeToSanMon}, ${squareFeet}, ${bedrooms}, ${bathrooms}, ${rent}, ${moveInDate}, ${utilities}, ${pets}, ${parking}, ${amenities}, ${link}, ${additionalNotes}\r\n`;
 
     fs.appendFile('data.txt', apartment, function (err) {
         if (err) {
